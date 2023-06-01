@@ -23,7 +23,7 @@
 # Q = [None,None,None,None]
 # place_queens(Q=Q,r=1)
 
-def place_queens_py(Q=[None,None,None,None], r=0):
+def place_queens_py(Q=[None,None,None,None,None,None,None,None], r=0):
     n=len(Q)
     #print("this starts here")
     if r==n:
