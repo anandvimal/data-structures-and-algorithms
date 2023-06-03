@@ -10,18 +10,20 @@ def subset_sum(X,i,T):
         with_x = subset_sum(X, i-1, T-X[i-1])
         without_x = subset_sum(X, i-1, T)
         return with_x or without_x
-        
+        #return with_x
 
 #lets test the subset_sum:
 test_bank = {
     5:[],
     -1:[1,2,3,4],
     0:[],
-    9:[5,4,3,2,1,6,66],
+    10:[5,4,3,2,1,6,66],
     9:[5,1,5,7,4,11,635]
     }
 
 for key in test_bank:
     result = subset_sum(X=test_bank[key], i=len(test_bank[key]), T=key)
+    print(f"testing key:{key} set:{test_bank[key]}")
     print(f"total:{key}, set:{test_bank[key]}, is_subset:{result}")
+    print()
     
