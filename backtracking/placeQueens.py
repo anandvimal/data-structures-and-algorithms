@@ -41,4 +41,7 @@ def place_queens_py(Q=[None,None,None,None,None,None,None,None], r=0):
                 Q[r] = j
                 #print(Q)
                 place_queens_py(Q,r+1)
-place_queens_py()
+place_queens_py(Q=[None,None,None,None], r=0)
+place_queens_py(Q=[None,None,None,None,None], r=0)
+place_queens_py(Q=[None,None,None,None,None,None,None,None], r=0)
+#place_queens_py(Q=[None,None,None,None,None,None,None,None,None,None,None,None,None,None,None,None], r=0)
