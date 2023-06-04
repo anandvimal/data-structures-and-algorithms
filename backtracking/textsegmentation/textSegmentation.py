@@ -1,5 +1,5 @@
 words = []
-all_words = ["blue", "hearth", "AND","SATURN", "SPIN"]
+all_words = ["apple","banada","blue", "hearth", "AND","SATURN", "SPIN"]
 
 # with open('words.webarchive') as f:
 #     all_words = f.readlines()
@@ -41,7 +41,3 @@ def splittable(text: str):
     return False
             
 splittable(text=text)
-print("-------")
-print(isWord("HE"))
-
-print(f"BLUE: {isWord('BLUET')}")
