@@ -26,6 +26,7 @@ text = "BLUEHEARTHANDSATURNSPIN"
 def splittable(text: str):
     n = len(text)
     if n == 0:
+        print("true it worked finally")
         return True
     for i in range(0,n+1):
         print(f"test: {text[0:i]} : {isWord(text[0:i])}")
