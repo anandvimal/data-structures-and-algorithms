@@ -8,4 +8,4 @@ def hanoi(n, src, dst, tmp):
         hanoi(n-1, tmp, dst, src)
     
 
-hanoi(4, "S", "D", "H")
+hanoi(10, "4", "D", "H")
