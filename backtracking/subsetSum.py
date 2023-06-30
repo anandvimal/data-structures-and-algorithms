@@ -25,7 +25,7 @@ def subset_sum_output(X,i,T):
             return Y
         Y = subset_sum_output(X, i-1, T-X[i-1])
         if Y != None:
-            return [Y,X[i-1]]
+            return Y,X[i-1]
 
 
 
@@ -43,5 +43,6 @@ for key in test_bank:
     result= subset_sum_output(X=test_bank[key], i=len(test_bank[key]), T=key)
     print(f"testing key:{key} set:{test_bank[key]}")
     print(f"total:{key}, set:{test_bank[key]}, is_subset:{result}")
+    print(type(result))
     print()
     
