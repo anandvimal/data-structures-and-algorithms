@@ -8,6 +8,7 @@ class Stack:
         if self.length == 0:
             return True
         else:
+            print(self.data)
             return False
                 
     def push(self, item: str):
@@ -34,6 +35,5 @@ mystack.push(2)
 mystack.push(1)
 mystack.pop()
 print(mystack.isempty())
-
 
 
