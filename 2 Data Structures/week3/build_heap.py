@@ -2,6 +2,7 @@
 #data = [5,4,3,2,1]
 data = [1,2,3,4,5]
 size = len(data)-1
+swaps = []
 
 def parent(i):
     return int(i/2)
@@ -52,4 +53,3 @@ def BuildHeap(data):
     print(f"data in the end: {data}")
 
 BuildHeap(data=data)
-    
