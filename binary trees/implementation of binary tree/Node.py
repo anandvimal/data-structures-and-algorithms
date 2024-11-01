@@ -40,9 +40,27 @@ class Node:
             else:
                 temp.right = Node(data=data)
                 return root
-            
+    
+    def delete(self, root, data):
+        pass
 
-
+    def search(self, node, key:int):
+        #The given key is not found
+        if node == None:
+            return None
+        
+        #The given key is founnd
+        elif node.data == key:
+            #print(f"searching: %d", node.data)
+            return node
+        
+        #search right side of binary tree
+        right = Node.search(self, node.right, key)
+        #print(f"searching: %d", node.data)
+        if right==None:
+            return Node.search(self,node.left, key)
+        else:
+            return right
         
 
 root = Node() # creatinng a empty tree, just empty root.
@@ -57,3 +75,7 @@ print(root.left.data)
 print(root.right.data)
 print(root.left.left.data)
 print(root.left.right.data)
+
+print(root.search(root, 1).data)
+print(root.search(root, 3).data)
+print(root.search(root, 5).data)
