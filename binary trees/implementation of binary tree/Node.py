@@ -41,8 +41,31 @@ class Node:
                 temp.right = Node(data=data)
                 return root
     
-    def delete(self, root, data):
-        pass
+    def delete(self, root, key):
+        node = Node.search(self,root, key)
+        
+        if node == None:
+            return None
+        
+        if node.data == key:
+            #if its a leaf?
+            if node.left ==None and node.right==None:
+                node= None
+
+            elif node.left == None and node.right != None:
+                #node parent stuff ???
+                node = node.right
+
+            elif node.left != None and node.right == None:
+                node = node.left
+
+            else:
+                rightkey = node.right.data
+                node.data = rightkey
+                node.right = Node.delete(self, node.right, rightkey)
+            
+        
+
 
     def search(self, node, key:int):
         #The given key is not found
@@ -79,3 +102,11 @@ print(root.left.right.data)
 print(root.search(root, 1).data)
 print(root.search(root, 3).data)
 print(root.search(root, 5).data)
+
+
+root.delete(root,1)
+print(root.search(root, 2).data)
+print(root.search(root, 3).data)
+print(root.search(root, 4).data)
+print(root.search(root, 5).data)
+print(root.search(root, 1).data)
