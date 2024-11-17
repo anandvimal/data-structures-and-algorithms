@@ -10,20 +10,18 @@ class Stack:
         if self.length == 0:
             return True
         else:
-            #print(f"data: {self.data}")
-            #print(f"max : {self.maximum}")
             return False
                 
     def push(self, item: str):
-        if self.isempty() or item > self.maximum[0]:
+        if len(self.maximum) ==0 :
+            self.maximum.insert(0, item)
+        elif int(item) > int(self.big()):
             self.maximum.insert(0, item)
         else:
-            pass
-            #self.maximum.insert(0, self.maximum[0])
+            max_in_stack = self.maximum[0]
+            self.maximum.insert(0, max_in_stack)
         self.data.insert(0, item)
         self.length = self.length+1
-        #print(self.data)
-        pass
 
     def pop(self):
         if self.length > 0:
@@ -32,7 +30,7 @@ class Stack:
             self.maximum.pop(0)
             self.length = self.length-1
             #print(self.data)
-            print(top)
+            #print(top)
             return top
         else:
             #return False
@@ -42,18 +40,8 @@ class Stack:
         #print(f"length: {self.length}")
         if self.length > 0:
             top = self.maximum[0]
-            print(top)
-            #return top
-
-
-# mystack = Stack()
-# print(mystack.isempty())
-# mystack.push(1)
-# mystack.push(2)
-# mystack.push(1)
-# mystack.big()
-# mystack.pop()
-# print(mystack.isempty())
+            #print(top)
+            return top
 
 
 if __name__ == "__main__":
@@ -64,7 +52,7 @@ if __name__ == "__main__":
         if cmd == "pop":
             mystack.pop()
         elif cmd == "max":
-            mystack.big()
+            print(mystack.big())
         elif cmd.startswith("push"):
             cmd = cmd[4:]
             # print(f"pushing cmd: {cmd}")
