@@ -49,3 +49,9 @@ def dfs(adj_list):
 
  
 dfs(adj_list)
+if connected_component[vertex_check1] == connected_component[vertex_check2]:
+    print("1")
+else:
+    print("0")
+
+
