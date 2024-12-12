@@ -82,7 +82,6 @@ def find_sink_or_cycle(adj_list):
                         if adj_list[key] == []:
                             #adj_list.pop(key)
                             print(f"#1 should removed from adj list  key:{key}  adj_list:{adj_list}")
-                            #adj_list.pop(key)
                         elif len(adj_list[key]) > 0:
                             next_vertex = adj_list[key][0]    
                 pass
