@@ -49,24 +49,49 @@ def postvisit(v):
     
 #return node when its a sink or False if its a cycle
 def find_sink_or_cycle(adj_list):
+    global is_cycle
     path = []
     next_vertex = next(iter(adj_list)) # start with first
-    while visited[next_vertex]==False and len(adj_list) > 0:
+    while is_cycle==False and len(adj_list) > 0:
         if visited[next_vertex] == True:
             is_cycle = True
         visited[next_vertex] = True
         print(f"visited: {next_vertex}")
         if next_vertex not in path:
             path.append(next_vertex)
-        print(f"path: {path}") 
-        if len(adj_list[next_vertex]) > 0:  #gets next vertex
-            next_vertex = adj_list[next_vertex][0] #pick first in list
-            print(f"next: {next_vertex}")
+        print(f"path: {path}")
+        print(f"adj_list:{adj_list} has next_vertex:{next_vertex} ?")
+        if next_vertex in adj_list: 
+            if len(adj_list[next_vertex]) > 0:  #gets next vertex
+                next_vertex = adj_list[next_vertex][0] #pick first in list
+                print(f"next: {next_vertex}")
+            else:
+                if next_vertex in path: 
+                    path.remove(next_vertex)
+                    print(f"removed: {next_vertex}")
+                adj_list.pop(next_vertex)
+                for key in adj_list:
+                    if next_vertex in adj_list[key]:
+                        adj_list[key].remove(next_vertex)
+                if len(path) > 0:
+                    next_vertex = path[-1]
+                    visited[next_vertex] = False  #we basically backtracking to previous vertex after finding and removing a sink.
+                    print(f"need to revisit : {next_vertex}")
+                elif len(adj_list) > 0: #len of path is 0
+                    for key in adj_list:
+                        if adj_list[key] == []:
+                            #adj_list.pop(key)
+                            print(f"#1 should removed from adj list  key:{key}  adj_list:{adj_list}")
+                            #adj_list.pop(key)
+                        elif len(adj_list[key]) > 0:
+                            next_vertex = adj_list[key][0]    
+                pass
         else: #adj_list[next_vertex] == [] #sink
             if next_vertex in path: 
                 path.remove(next_vertex)
                 print(f"removed: {next_vertex}")
-            adj_list.pop(next_vertex)
+            if next_vertex in adj_list:
+                adj_list.pop(next_vertex)
             for key in adj_list:
                 if next_vertex in adj_list[key]:
                     adj_list[key].remove(next_vertex)
@@ -78,9 +103,10 @@ def find_sink_or_cycle(adj_list):
                 for key in adj_list:
                     if adj_list[key] == []:
                         #adj_list.pop(key)
-                        print(f"should removed from adj list  key:{key}  adj_list:{adj_list}")
+                        print(f"#2should removed from adj list  key:{key}  adj_list:{adj_list}")
                     elif len(adj_list[key]) > 0:
                         next_vertex = adj_list[key][0]
+        print(f"adj_list: {adj_list}")
         print("--")
 
 
