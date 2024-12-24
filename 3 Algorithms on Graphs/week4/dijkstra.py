@@ -57,9 +57,10 @@ def dijkstra(adj_list, starting_node):
         distance[vertex] = infinity
         previous[vertex] = None
     distance[starting_node] = 0
-    
-    for vertex in adj_list:
-        add_task(distance[vertex], vertex)
+
+    add_task(0, starting_node)    
+    # for vertex in adj_list:
+    #     add_task(distance[vertex], vertex)
     while len(heap) > 0: 
         u = heapq.heappop(heap)
         u = u[1]
@@ -76,7 +77,8 @@ def dijkstra(adj_list, starting_node):
             if distance[v] > distance[u] + weight_uv:
                 distance[v] = distance[u] + weight_uv
                 previous[v] = u
-                update_priority(distance[v], v)
+                #update_priority(distance[v], v)
+                add_task(distance[v],v)
 
 dijkstra(adj_list, starting_node)
 if distance[ending_node] < infinity:
