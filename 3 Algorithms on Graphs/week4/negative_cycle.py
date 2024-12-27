@@ -1,7 +1,9 @@
 import math
 import copy
-infinity = math.inf
-#negative_infinity = -math.inf
+#infinity = math.inf
+infinity = 10**19
+# real infinity will not work for this problem because we need to update numbers in vth iteration. 
+# and it can be infinity-weight etc. Use some large number instead of infinity. 
 
 graph_details = list(map(int, input().split())) 
 n = graph_details[0] # total vertices
