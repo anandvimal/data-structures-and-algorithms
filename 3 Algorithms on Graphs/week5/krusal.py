@@ -34,18 +34,17 @@ for i in range(0,m):
 #sort edges:
 edges.sort(key=lambda x: x[2])
 
-# get the vertix to check for connected component:
-starting_node, ending_node =  map(int, input().split())
-
 # disjoin sets:
-parent = []
-rank = []
-
+parent = [i for i in range(n+1)]
+rank = [0 for _ in range(n+1)]
+print(f"parent: {parent}")
+print(f"rank: {rank}")
 def make_set(i):
     parent[i] = i
     rank[i] = 0
 
 def find(i):
+    print(f"i:{i} parent:{parent}")
     while i != parent[i]:
         i = parent[i]
         return i
@@ -75,6 +74,7 @@ def krusal(adj_list, edges):
     for edge in edges:
         u = edge[0]
         v = edge[1]
+        print(f"u:{u} and v:{v}")
         if find(u) != find(v):
             X.append[[u,v]]
             union(u,v)
