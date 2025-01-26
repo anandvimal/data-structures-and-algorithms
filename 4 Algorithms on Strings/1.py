@@ -1,3 +1,4 @@
+#python3
 no_of_patterns = int(input())
 # patterns = ['ATAGA', 'ATC', 'GAT']
 patterns = []
@@ -5,14 +6,14 @@ for i in range(no_of_patterns):
     pattern = input()
     patterns.append(pattern)
 
-print(patterns) 
+#print(patterns) 
 # of vertices
 num_of_vertex = 0
 adj_list = {
     0:[],   
 }
 
-print(adj_list)
+#print(adj_list)
 
 def lookup_in_adj_list(letter, key):
     for item in adj_list[key]:
@@ -34,12 +35,25 @@ def trie_construction(patterns):
                 lookup_key = lookup_in_adj_list(letter=letter, key=lookup_key)
 
 
+
+# def print_adj_list():
+#     q = []
+#     q.append(0)
+#     while len(q) > 0:
+#         current = q.pop(0)
+#         for item in adj_list[current]:
+#             print(f"{current}->{item[0]}:{item[1]}") #coursera does not accept f-string! 
+#             q.append(item[0])
+
+
 def print_adj_list():
-    for key in adj_list:
-        print(key, adj_list[key])
+    q = [0]
+    while q:
+        current = q.pop(0)
+        for item in adj_list[current]:
+            print("{}->{}:{}".format(current, item[0], item[1]))
+            q.append(item[0])
 
 trie_construction(patterns) 
-
-print(adj_list)
 
 print_adj_list()
