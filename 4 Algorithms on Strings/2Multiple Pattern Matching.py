@@ -19,8 +19,7 @@ adj_list = {
 def lookup_in_adj_list(letter, key):
     for item in adj_list[key]:
         if item[1] == letter:
-            print(f"item[1]: {item[1]}")
-            print(f"item[0]: {item[0]} {type(item[0])}")
+            #print(f"item[0]: {item[0]} {type(item[0])}")
             return item[0]
     return -1
 
@@ -48,23 +47,27 @@ def prefix_trie_matching(text, adj_list):
     v = adj_list[node_number] # root node
     while True:
         if v == []:
-            print(f" match: {match}")
+            #print(f" match: {match}")
             return match
         elif lookup_in_adj_list(letter=symbol, key = node_number) != -1:
             match = match + symbol
             node_number = lookup_in_adj_list(letter=symbol, key = node_number)
-            print(f"node_number: {node_number}")
+            #print(f"node_number: {node_number}")
             v = adj_list[int(node_number)]
             counter += 1
             symbol = text[counter]
         else:
-            print("no output found")    
-            return  
+            #print("no output found")    
+            return -1 
 
 def trie_matching(text, adj_list):
     text = text + " " # this is needed work last word in the text to match!
+    match_counter = 0
     while len(text) > 0:
-        prefix_trie_matching(text=text, adj_list=adj_list)
+        result = prefix_trie_matching(text=text, adj_list=adj_list)
+        if result != -1:
+            print(match_counter, end=" ")
         text = text[1:]
+        match_counter += 1
 
 trie_matching(text, adj_list)
