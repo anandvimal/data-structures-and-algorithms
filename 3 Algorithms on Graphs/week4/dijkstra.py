@@ -85,3 +85,15 @@ if distance[ending_node] < infinity:
     print(distance[ending_node])
 else:
     print("-1")
+
+
+# Sample 1.
+# Input:
+# 4 4
+# 1 2 1
+# 4 1 2
+# 2 3 2
+# 1 3 5
+# 1 3
+# Output:
+# 3

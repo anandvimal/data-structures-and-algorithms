@@ -54,4 +54,10 @@ if connected_component[vertex_check1] == connected_component[vertex_check2]:
 else:
     print("0")
 
-
+# sample input 
+# 4 4
+# 1 2
+# 3 2
+# 4 3
+# 1 4
+# 1 4
