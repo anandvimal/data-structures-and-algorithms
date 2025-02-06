@@ -1,8 +1,8 @@
 # text should be appended with atleast one whitespace to work properly for last word to match.
 
 # at end of each pattern should we insert * to know its a leaf node or not?
-patterns = ['this', 'that', 'here', 'there', 'alpacas']
-text = "this is a wonderful life. my life with pretty alpacas "
+patterns = ['this', 'that', 'here', 'there', 'alpacas']  # patterns to match are smaller
+text = "this is a wonderful life. here my life with pretty alpacas " #bigger text to match
 class TrieNode():
     def __init__(self):
         self.childern={}
@@ -42,8 +42,9 @@ def prefix_trie_matching(text=text, trie=trie_build):
     symbol = text[text_counter]
     v = trie.root
     while True:
+
         if v.childern == {}:
-            print(f"match: {match}")
+            print(f" match: {match}")
             return match
         elif symbol in v.childern :
             match = match + symbol  # constructing the matching word
@@ -51,7 +52,7 @@ def prefix_trie_matching(text=text, trie=trie_build):
             text_counter +=1
             symbol = text[text_counter] #moving to next letter in text
         else:
-            print("no outtput found")
+            print(f"no outtput found")
             #match = ""
             #v=trie.root
             return
