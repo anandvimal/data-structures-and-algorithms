@@ -39,10 +39,8 @@ if __name__ == '__main__':
     position = 0
     answer = ""
     while len(answer) < len(bwt):
-        #answer += first_column[position]
-        #answer = answer + first_column[position]
-        answer = first_column[position] + answer
-        position = bwt_to_first_column(bwt, position)
+        answer = first_column[position] + answer # list//array
+        position = bwt_to_first_column(bwt, position) # dictionary
 
     print(answer)
     #print(inverse(answer))
