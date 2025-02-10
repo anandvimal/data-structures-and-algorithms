@@ -1,4 +1,8 @@
 # python3
+
+#read this to improve ?
+#https://www.coursera.org/learn/algorithms-on-strings/discussions/forums/caakMsMCEeyb8QqTmnjx6w/threads/q9Qi-8_EEe6sSwrM6xmJAQ
+
 import sys
 
 def InverseBWT(bwt):

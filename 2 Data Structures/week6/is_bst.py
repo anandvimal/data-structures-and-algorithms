@@ -1,33 +1,27 @@
 #!/usr/bin/python3
-
 import sys, threading
 
 sys.setrecursionlimit(10**7) # max depth of recursion
-threading.stack_size(2**25)  # new thread will get stack of such size
-#result = [] #global variable to store the result of inorder_transversal
-prev = -10000000000 #global variable to store the previous value of the inorder_transversal 
-
+#https://www.coursera.org/learn/data-structures/discussions/forums/T-oWKMceEeyBoBL7F1DbTw/threads/ggu9m_HYEeyKXA5zGGl7GQ
+threading.stack_size(2**27)  # new thread will get stack of such size # 
+result = [] #global variable to store the result of inorder_transversal
 
 def inorder_transversal(tree, i):
-    global prev
+    global result
     if i == -1:
         return None
     inorder_transversal(tree, tree[i][1])
-    if prev < tree[i][0]:
-        prev = tree[i][0]
-    else:
-        return False
+    result.append(tree[i][0])
     inorder_transversal(tree, tree[i][2]) 
 
 def IsBinarySearchTree(tree):
   global result
-  result1 =inorder_transversal(tree, 0)
   # Implement correct algorithm here
-  if result1 == False:
-    return False
-  return True
+  inorder_transversal(tree, 0)
+
 
 def main():
+  global result
   nodes = int(sys.stdin.readline().strip())
   tree = []
   for i in range(nodes):
@@ -35,9 +29,11 @@ def main():
   if nodes == 0:
     print("CORRECT")
   else:
-    if IsBinarySearchTree(tree):
+    IsBinarySearchTree(tree)
+    if result == sorted(result):
       print("CORRECT")
     else:
       print("INCORRECT")
-
+    #print(result)
 threading.Thread(target=main).start()
+#main()
