@@ -3,7 +3,7 @@ import sys, threading
 
 sys.setrecursionlimit(10**7) # max depth of recursion
 #https://www.coursera.org/learn/data-structures/discussions/forums/T-oWKMceEeyBoBL7F1DbTw/threads/ggu9m_HYEeyKXA5zGGl7GQ
-threading.stack_size(2**30)  # new thread will get stack of such size # 
+threading.stack_size(2**27)  # new thread will get stack of such size # 
 #result = [] #global variable to store the result of inorder_transversal
 
 # >>> tree[tree[0][1]][0]
@@ -61,6 +61,14 @@ def main():
   tree = []
   for i in range(nodes):
     tree.append(list(map(int, sys.stdin.readline().strip().split())))
+
+  #tree = [[2, 1, 2], [1, -1, -1], [3, -1, -1]]
+  #tree = [[1, 1, 2], [2, -1, -1], [3, -1, -1]]
+  #tree = [[1, -1, 1], [2, -1, 2], [3, -1, 3], [4, -1, 4], [5, -1, -1]]
+  #tree = [[4, 1, 2], [2, 3, 4], [6, 5, 6], [1, -1, -1], [3, -1, -1], [5, -1, -1], [7, -1, -1]]
+  #tree = [[4, 1, -1], [2, 2, 3], [1, -1, -1], [5, -1, -1]]
+  #tree = [[1, -1, 1], [2, -1, 2], [3, -1, 3], [4, -1, 4], [5, -1, -1]] # 1 -1 1, 2 -1 2, 3 -1 3, 4 -1 4, 5 -1 -1
+  print(tree)
   if nodes == 0:
     print("CORRECT")
   else:
