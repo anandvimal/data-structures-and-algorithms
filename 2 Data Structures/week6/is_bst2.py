@@ -31,6 +31,7 @@ threading.stack_size(2**27)  # new thread will get stack of such size #
 def max_inorder_transversal(tree, i):
   #global result
   result = []
+  
   def helper(tree, i):
     nonlocal result
     #global result
@@ -41,7 +42,7 @@ def max_inorder_transversal(tree, i):
     helper(tree, tree[i][2]) 
 
   helper(tree, i)
-  print(f"result: {result}")
+  #print(f"result: {result}")
   return max(result)
 
 def inorder(tree, i):
@@ -54,20 +55,20 @@ def inorder(tree, i):
     else:
       if tree[i][1] != -1:
         # if max_inorder_transversal(tree, tree[i][1]) != None :
-          print(f"max_inorder_transversal(tree,tree[i][1] )  left -> {max_inorder_transversal(tree,tree[i][1] )}")
-          print(f"tree[i][1] -> {tree[i][1]}")
-          print(f"tree[i][0] -> {tree[i][0]}")
+          #print(f"max_inorder_transversal(tree,tree[i][1] )  left -> {max_inorder_transversal(tree,tree[i][1] )}")
+          #print(f"tree[i][1] -> {tree[i][1]}")
+          #print(f"tree[i][0] -> {tree[i][0]}")
           if max_inorder_transversal(tree,tree[i][1] )  >= tree[i][0]: #tree[tree[i][1]][0] # left
-            print("this just happened")
+            #print("this just happened")
             voilations += 1
           helper(tree, tree[i][1]) #left
       if tree[i][2] != -1 :
         # if max_inorder_transversal(tree, tree[i][2]) != None : 
-          print(f"max_inorder_transversal(tree,tree[i][2] ) right -> {max_inorder_transversal(tree,tree[i][2] )}")
-          print(f"tree[i][0] -> {tree[i][0]}")
-          print(f"tree[i][2] -> {tree[i][2]}")
+          #print(f"max_inorder_transversal(tree,tree[i][2] ) right -> {max_inorder_transversal(tree,tree[i][2] )}")
+          #print(f"tree[i][0] -> {tree[i][0]}")
+          #print(f"tree[i][2] -> {tree[i][2]}")
           if max_inorder_transversal(tree,tree[i][2] )  <= tree[i][0]: # tree[tree[i][2]][0] # right
-            print("this just happened")
+            #print("this just happened")
             voilations += 1
           helper(tree, tree[i][2]) #right
 
@@ -108,7 +109,7 @@ def inorder(tree, i):
 def IsBinarySearchTree(tree):
   # Implement correct algorithm here
   voilations = inorder(tree, 0)
-  print(f"voilations: {voilations}")
+  #print(f"voilations: {voilations}")
   return voilations
 
 def main():
