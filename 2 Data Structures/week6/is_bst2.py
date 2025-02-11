@@ -13,70 +13,126 @@ threading.stack_size(2**27)  # new thread will get stack of such size #
 # tree[i][2] = 2 #right child
 # 3
 
-def inorder_transversal(tree, i):
-  result = []
+# def inorder_transversal(tree, i):
+#   result = []
 
+#   def helper(tree, i):
+#     if i == -1:
+#         return []
+#     helper(tree, tree[i][1])
+#     result.append(tree[i][0])
+#     helper(tree, tree[i][2])
+#     return result
+
+#   helper(tree, i)
+  
+#   return result
+
+def max_inorder_transversal(tree, i):
+  #global result
+  result = []
   def helper(tree, i):
+    nonlocal result
+    #global result
     if i == -1:
-        return []
+      return None
     helper(tree, tree[i][1])
     result.append(tree[i][0])
-    helper(tree, tree[i][2])
-    return result
+    helper(tree, tree[i][2]) 
 
   helper(tree, i)
-  
-  return result
+  print(f"result: {result}")
+  return max(result)
 
-def check_inorder_transversal(tree, i):
-  
-  result_left = inorder_transversal(tree, tree[i][1])
-  if len(result_left) > 0:
-    result_left = max(result_left)  
-    if tree[i][0] < result_left:
-      return False
-  elif len(result_left) == 0:
-    return True
-  
-  result_right = inorder_transversal(tree, tree[i][2])
-  if len(result_right) > 0:
-    result_right = min(result_right)
-    if tree[i][0] > result_right:
-      return False
-  elif len(result_right) == 0:
-    return True
-  
-  check_inorder_transversal(tree, tree[i][1]) 
-  check_inorder_transversal(tree, tree[i][2])
-  return True
+def inorder(tree, i):
+  voilations = 0
+
+  def helper(tree, i):
+    nonlocal voilations
+    if i == -1:
+      return 0
+    else:
+      if tree[i][1] != -1:
+        # if max_inorder_transversal(tree, tree[i][1]) != None :
+          print(f"max_inorder_transversal(tree,tree[i][1] )  left -> {max_inorder_transversal(tree,tree[i][1] )}")
+          print(f"tree[i][1] -> {tree[i][1]}")
+          print(f"tree[i][0] -> {tree[i][0]}")
+          if max_inorder_transversal(tree,tree[i][1] )  >= tree[i][0]: #tree[tree[i][1]][0] # left
+            print("this just happened")
+            voilations += 1
+          helper(tree, tree[i][1]) #left
+      if tree[i][2] != -1 :
+        # if max_inorder_transversal(tree, tree[i][2]) != None : 
+          print(f"max_inorder_transversal(tree,tree[i][2] ) right -> {max_inorder_transversal(tree,tree[i][2] )}")
+          print(f"tree[i][0] -> {tree[i][0]}")
+          print(f"tree[i][2] -> {tree[i][2]}")
+          if max_inorder_transversal(tree,tree[i][2] )  <= tree[i][0]: # tree[tree[i][2]][0] # right
+            print("this just happened")
+            voilations += 1
+          helper(tree, tree[i][2]) #right
+
+      
+
+  helper(tree, i)
+  return voilations
+
+# def inorder(tree, i):
+#     violations = 0  # Fix spelling
+
+#     def helper(tree, i):
+#         nonlocal violations  # Fix scope issue
+#         if i == -1:
+#             return 0  # Properly handle empty nodes
+        
+#         # Check left child
+#         if tree[i][1] != -1:
+#             if tree[tree[i][1]][0] >= tree[i][0]:  # Left child must be < parent
+#                 print("Violation detected")
+#                 violations += 1
+
+#         # Check right child
+#         if tree[i][2] != -1:
+#             if tree[tree[i][2]][0] <= tree[i][0]:  # Right child must be > parent
+#                 print("Violation detected")
+#                 violations += 1
+
+#         # Recur for left and right subtrees
+#         helper(tree, tree[i][1])
+#         helper(tree, tree[i][2])
+
+#     helper(tree, i)
+#     return violations  # Return the final count
+
 
 
 def IsBinarySearchTree(tree):
   # Implement correct algorithm here
-  result = check_inorder_transversal(tree, 0)
-  return result
+  voilations = inorder(tree, 0)
+  print(f"voilations: {voilations}")
+  return voilations
 
 def main():
   nodes = int(sys.stdin.readline().strip())
+
   tree = []
   for i in range(nodes):
     tree.append(list(map(int, sys.stdin.readline().strip().split())))
-
-  #tree = [[2, 1, 2], [1, -1, -1], [3, -1, -1]]
-  #tree = [[1, 1, 2], [2, -1, -1], [3, -1, -1]]
-  #tree = [[1, -1, 1], [2, -1, 2], [3, -1, 3], [4, -1, 4], [5, -1, -1]]
-  #tree = [[4, 1, 2], [2, 3, 4], [6, 5, 6], [1, -1, -1], [3, -1, -1], [5, -1, -1], [7, -1, -1]]
-  #tree = [[4, 1, -1], [2, 2, 3], [1, -1, -1], [5, -1, -1]]
-  #tree = [[1, -1, 1], [2, -1, 2], [3, -1, 3], [4, -1, 4], [5, -1, -1]] # 1 -1 1, 2 -1 2, 3 -1 3, 4 -1 4, 5 -1 -1
-  print(tree)
+  #nodes =5
+  #tree = [[2, 1, 2], [1, -1, -1], [3, -1, -1]] #correct
+  #tree = [[1, 1, 2], [2, -1, -1], [3, -1, -1]] #incorrect
+  #tree = [[1, -1, 1], [2, -1, 2], [3, -1, 3], [4, -1, 4], [5, -1, -1]] #correct
+  #tree = [[4, 1, 2], [2, 3, 4], [6, 5, 6], [1, -1, -1], [3, -1, -1], [5, -1, -1], [7, -1, -1]]   #correct  
+  #tree = [[4, 1, -1], [2, 2, 3], [1, -1, -1], [5, -1, -1]] #incorrect  
+  #tree = [[1, -1, 1], [2, -1, 2], [3, -1, 3], [4, -1, 4], [5, -1, -1]] # 1 -1 1, 2 -1 2, 3 -1 3, 4 -1 4, 5 -1 -1 #correct
+  #print(tree)
   if nodes == 0:
     print("CORRECT")
   else:
     result =IsBinarySearchTree(tree)
-    if result == True:
-      print("CORRECT")
-    else:
+    if result > 0:
       print("INCORRECT")
+    else:
+      print("CORRECT")
     #print(f"result : {result}")
 threading.Thread(target=main).start()
 #main()
