@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 import sys, threading
+# this works but too slow dont bother with this.
 
 sys.setrecursionlimit(10**7) # max depth of recursion
 #https://www.coursera.org/learn/data-structures/discussions/forums/T-oWKMceEeyBoBL7F1DbTw/threads/ggu9m_HYEeyKXA5zGGl7GQ
@@ -77,32 +78,7 @@ def inorder(tree, i):
   helper(tree, i)
   return voilations
 
-# def inorder(tree, i):
-#     violations = 0  # Fix spelling
 
-#     def helper(tree, i):
-#         nonlocal violations  # Fix scope issue
-#         if i == -1:
-#             return 0  # Properly handle empty nodes
-        
-#         # Check left child
-#         if tree[i][1] != -1:
-#             if tree[tree[i][1]][0] >= tree[i][0]:  # Left child must be < parent
-#                 print("Violation detected")
-#                 violations += 1
-
-#         # Check right child
-#         if tree[i][2] != -1:
-#             if tree[tree[i][2]][0] <= tree[i][0]:  # Right child must be > parent
-#                 print("Violation detected")
-#                 violations += 1
-
-#         # Recur for left and right subtrees
-#         helper(tree, tree[i][1])
-#         helper(tree, tree[i][2])
-
-#     helper(tree, i)
-#     return violations  # Return the final count
 
 
 
