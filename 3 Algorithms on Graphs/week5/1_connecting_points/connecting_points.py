@@ -1,4 +1,6 @@
 #Uses python3
+# solved using krushkal's algorithm and union find data structure   
+# union find can be more optimized in runtime as current runtime is O(n)
 import sys
 import math
 
