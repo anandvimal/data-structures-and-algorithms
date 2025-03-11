@@ -15,9 +15,10 @@ def BWT(text):
         bwt += last_char
     return bwt
 
-# if __name__ == '__main__':
-#     text = sys.stdin.readline().strip()
-#     print(BWT(text))
+if __name__ == '__main__':
+    text = sys.stdin.readline().strip()
+    print(BWT(text))
 
 text = sys.stdin.readline().strip()
+# text = "banana$"  
 print(BWT(text))
