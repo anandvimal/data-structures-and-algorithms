@@ -19,15 +19,15 @@ def max_profit(daily_price):
         print(" Buy or hold")
         strategy_buy = cash_not_owning_share - price
         strategy_hold = cash_owning_share
-        print(f"strategy_buy = {strategy_buy}")
-        print(f"strategy_hold = {strategy_hold}")
+        print(f"strategy_buy = {strategy_buy}")  # buy the stock, we dont have it.
+        print(f"strategy_hold = {strategy_hold}") 
         print(" ")
 
         #transition to the current day, not owning the stock 
         # sell or hold
         print("Sell or hold")
-        strategy_sell = cash_owning_share + price
-        strategy_avoid = cash_not_owning_share
+        strategy_sell = cash_owning_share + price #sell the stock, we have it. 
+        strategy_avoid = cash_not_owning_share 
         print(f"strategy_sell = {strategy_sell}")
         print(f"strategy_avoid = {strategy_avoid}")
         print(" ")
@@ -78,6 +78,34 @@ def max_profit2(daily_price):
 
 print(f"max profit 2 : {max_profit2(daily_price)}")
         
+
+# do this instead of the above
+daily_price = [5,1,7]
+
+def max_profit3(daily_price):
+    #initial state:start from a reference cash amount
+    # it can be any value
+    # we use 0 and allow our cash to go below 0 if we need to buy a share.
+    cash_not_owning_share = 0 # amount we start with 0 share 0 money in hand.
+    # high penalty for owning a stock initially. 
+    # ensure this option is never used. 
+    cash_owning_share = -float('inf') # starting with a stock not allowed.
+
+    for price in daily_price:
+        #buy or avoid
+        buy = cash_not_owning_share - price
+        avoid = cash_not_owning_share
+
+        #sell or hold
+        sell = cash_owning_share + price
+        hold = cash_owning_share
+
+        cash_not_owning_share = max(sell, avoid)
+        cash_owning_share = max(buy, hold)
+
+    return cash_not_owning_share
+
+print(f"max profit 3 : {max_profit3(daily_price)}")
 
 
 
