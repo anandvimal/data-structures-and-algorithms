@@ -3,6 +3,10 @@ Data Structures and Algorithms specialization Coursera, University of California
 
 The repository is organized into several directories, each focusing on different aspects of data structures and algorithms. Here's an overview:​
 
+
+# Project Structure: Data Structures and Algorithms
+
+```plaintext
 data-structures-and-algorithms/
 ├── 1 Algorithmic toolbox/
 ├── 2 Data Structures/
