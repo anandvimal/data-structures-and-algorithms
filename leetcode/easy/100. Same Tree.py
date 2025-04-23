@@ -10,11 +10,13 @@ class Solution:
         def same(p, q):
             if p is None and q is None:
                 return True
-            if p is None or q is None:
+            elif p is None or q is None:
                 return False
-            if p.val == q.val and same(p.right, q.right)==True and same(p.left,  q.left)==True:
+            elif p.val == q.val and same(p.right, q.right)==True and same(p.left,  q.left)==True:
                 return True
             else: 
                 return False
         return same(p,q)
+        
+
         
