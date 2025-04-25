@@ -20,5 +20,9 @@ class Solution:
             if value > max_value:
                 max_value = value
                 max_key = key
-
-        return max_key
+        result = []
+        for key, value in data.items():
+            if value == max_value:
+                result.append(key)
+        result = list(set(result))
+        return result
