@@ -8,22 +8,81 @@ The repository is organized into several directories, each focusing on different
 
 ```plaintext
 data-structures-and-algorithms/
-├── 1 Algorithmic toolbox/
-├── 2 Data Structures/
-├── 3 Algorithms on Graphs/
-├── 4 Algorithms on Strings/
-├── backtracking/
-├── binary trees/
-├── dynamic programming/
-├── examples/
-├── hacker rank/
-├── leetcode/
-│   └── easy/
-├── mathematical-thinking-in-cs/
-├── recursion/
-├── sorting/
 ├── .DS_Store
 ├── .classpath
 ├── .gitignore
 ├── .project
-└── README.md
+├── README.md
+├── 1 Algorithmic toolbox/
+│   ├── week1_programming_challenges/
+│   │   ├── APlusB.java
+│   │   ├── MaxPairwiseProduct.java
+│   │   └── ...
+│   ├── week2_algorithmic_warmup/
+│   │   ├── Fibonacci.java
+│   │   ├── GCD.java
+│   │   └── ...
+│   └── ...
+├── 2 Data Structures/
+│   ├── week1_basic_data_structures/
+│   │   ├── Stack.java
+│   │   ├── Queue.java
+│   │   └── ...
+│   ├── week2_priority_queues/
+│   │   ├── MaxHeap.java
+│   │   └── ...
+│   └── ...
+├── 3 Algorithms on Graphs/
+│   ├── week1_decomposition/
+│   │   ├── BFS.java
+│   │   ├── DFS.java
+│   │   └── ...
+│   ├── week2_shortest_paths/
+│   │   ├── Dijkstra.java
+│   │   └── ...
+│   └── ...
+├── 4 Algorithms on Strings/
+│   ├── week1_trie/
+│   │   ├── Trie.java
+│   │   └── ...
+│   ├── week2_suffix_array/
+│   │   ├── SuffixArray.java
+│   │   └── ...
+│   └── ...
+├── backtracking/
+│   ├── NQueens.java
+│   ├── SudokuSolver.java
+│   └── ...
+├── binary trees/
+│   ├── BinaryTree.java
+│   ├── BST.java
+│   └── ...
+├── dynamic programming/
+│   ├── Knapsack.java
+│   ├── LongestCommonSubsequence.java
+│   └── ...
+├── examples/
+│   ├── Example1.java
+│   ├── Example2.java
+│   └── ...
+├── hacker rank/
+│   ├── Problem1.java
+│   ├── Problem2.java
+│   └── ...
+├── leetcode/
+│   ├── TwoSum.java
+│   ├── ReverseLinkedList.java
+│   └── ...
+├── mathematical-thinking-in-cs/
+│   ├── Week1/
+│   │   ├── Problem1.java
+│   │   └── ...
+│   └── ...
+├── recursion/
+│   ├── Factorial.java
+│   ├── Fibonacci.java
+│   └── ...
+└── sorting/
+    ├── QuickSort.java
+    ├── MergeSort.java
+    └── ...
