@@ -19,7 +19,7 @@ def k_sum_subarrays_optimized(nums: List[int], k: int) -> int:
         freq  = prefix_sum_map.get(curr_prefix_sum, 0)
         prefix_sum_map[curr_prefix_sum] = freq + 1
         #print(f"prefix_sum_map: {prefix_sum_map}")
- 
+        print(f"count : {count}")
     return count 
 
 nums = [1, 2, -1, 1, 2]
