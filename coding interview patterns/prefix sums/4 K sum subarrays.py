@@ -4,7 +4,7 @@ def k_sum_subarrays_optimized(nums: List[int], k: int) -> int:
     count = 0
     # Initialize the map with 0 to handle subarrays that sum to 'k' 
     # from the start of the array
-    prefix_sum_map = {0: 0}
+    prefix_sum_map = {0: 1}
     curr_prefix_sum = 0
     for num in nums:
         # Update the current prefix sum, by adding the current number
