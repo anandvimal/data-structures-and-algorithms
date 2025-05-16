@@ -11,15 +11,11 @@ def k_sum_subarrays_optimized(nums: List[int], k: int) -> int:
         curr_prefix_sum += num
         # If a subarray with sum 'k' is found, increment the count by the 
         # number of times that prefix sum has been seen found
-        print(f"count : {count}  curr_prefix_sum: {curr_prefix_sum}  num: {num}")
         if curr_prefix_sum - k in prefix_sum_map:
             count += prefix_sum_map[curr_prefix_sum - k]
-            #count += 1
         # Update the map with the current prefix sum
         freq  = prefix_sum_map.get(curr_prefix_sum, 0)
         prefix_sum_map[curr_prefix_sum] = freq + 1
-        #print(f"prefix_sum_map: {prefix_sum_map}")
-        print(f"count : {count}")
     return count 
 
 nums = [1, 2, -1, 1, 2]
